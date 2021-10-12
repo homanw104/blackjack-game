@@ -1,4 +1,4 @@
-package world.homans.twentyonepoint;
+package world.homans.blackjack;
 
 /**
  * Game class.

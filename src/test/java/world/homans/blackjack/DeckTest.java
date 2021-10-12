@@ -1,4 +1,4 @@
-package world.homans.twentyonepoint;
+package world.homans.blackjack;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

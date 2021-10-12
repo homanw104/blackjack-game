@@ -1,4 +1,4 @@
-package world.homans.twentyonepoint;
+package world.homans.blackjack;
 
 import com.sun.istack.internal.Nullable;
 
