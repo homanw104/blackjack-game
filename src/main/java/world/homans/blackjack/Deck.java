@@ -1,25 +1,28 @@
 package world.homans.blackjack;
 
-import com.sun.istack.internal.Nullable;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
  * A deck of cards - 52 cards at most.
+ * When initialized, the Deck is ordered from SPADE to DIAMOND, A to K.
+ * You may want to call shuffle() before drawing a card.
  */
 public class Deck {
 
     private ArrayList<Card> cards;
 
+    /**
+     * Initialize a new ordered 52-card deck.
+     */
     public Deck() {
-        resetDeck();
+        this.reset();
     }
 
     /**
      * Reset the deck into a list of 52 unique & ordered cards.
      */
-    public void resetDeck() {
+    public void reset() {
         cards = new ArrayList<>();
         for (CardSuit suit : CardSuit.values()) {
             for (CardRank rank : CardRank.values()) {
@@ -29,9 +32,9 @@ public class Deck {
     }
 
     /**
-     * Shuffle all cards in the deck.
+     * Shuffle all cards remained in the deck.
      */
-    public void shuffleDeck() {
+    public void shuffle() {
         Collections.shuffle(this.cards);
     }
 
@@ -45,9 +48,9 @@ public class Deck {
 
     /**
      * Draw and return a card from top of the deck.
-     * @return Card from top of the deck, or null if the deck is empty.
+     * @return Card from top of the deck. Null is returned if the deck is empty.
      */
-    public @Nullable Card drawCardFromTop() {
+    public Card drawCardFromTop() {
         if (this.isEmpty()) {
             return null;
         } else {
