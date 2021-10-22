@@ -5,4 +5,7 @@ package world.homans.blackjack;
  */
 public class Player {
 
+    public void deal() {
+
+    }
 }
