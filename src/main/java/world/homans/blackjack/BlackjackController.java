@@ -5,17 +5,14 @@ import javafx.fxml.FXML;
 public class BlackjackController {
 
     Player player = new Player();
-    Dealer dealer;
-    Deck deck;
-    Game game;
+    Game game = new Game(player);
 
     /**
      * Player adds a $100 value chip to the bet.
      */
     @FXML
     protected void onBet100ChipClicked() {
-//        game.increaseBet(new Chip(100));
-        System.out.println("Bet 100");
+        game.increaseBet(new Chip(100));
     }
 
     /**
@@ -23,8 +20,7 @@ public class BlackjackController {
      */
     @FXML
     protected void onBet500ChipClicked() {
-//        game.increaseBet(new Chip(500));
-        System.out.println("Bet 500");
+        game.increaseBet(new Chip(500));
     }
 
     /**
@@ -32,8 +28,7 @@ public class BlackjackController {
      */
     @FXML
     protected void onBet1000ChipClicked() {
-//        game.increaseBet(new Chip(1000));
-        System.out.println("Bet 1000");
+        game.increaseBet(new Chip(1000));
     }
 
     /**
@@ -41,8 +36,7 @@ public class BlackjackController {
      */
     @FXML
     protected void onBet5000ChipClicked() {
-//        game.increaseBet(new Chip(5000));
-        System.out.println("Bet 5000");
+        game.increaseBet(new Chip(5000));
     }
 
     /**
@@ -50,7 +44,7 @@ public class BlackjackController {
      */
     @FXML
     protected void onCancelButtonClick() {
-
+        game.clearBet();
     }
 
     /**
@@ -58,7 +52,8 @@ public class BlackjackController {
      */
     @FXML
     protected void onDealButtonClick() {
-
+        player.deal(game.getBet());
+        game.start();
     }
 
     /**
@@ -66,7 +61,8 @@ public class BlackjackController {
      */
     @FXML
     protected void onStandButtonClick() {
-
+        game.getDealer().hitTillSeventeen(game.getDeck());
+        game.checkAfterStand();
     }
 
     /**
@@ -74,7 +70,8 @@ public class BlackjackController {
      */
     @FXML
     protected void onHitButtonClick() {
-
+        player.hit(game.getDeck());
+        game.checkAfterHit();
     }
 
     /**
@@ -82,6 +79,6 @@ public class BlackjackController {
      */
     @FXML
     protected void onDoubleButtonClick() {
-
+        player.doubleDeal();
     }
 }

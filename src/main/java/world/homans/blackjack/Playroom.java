@@ -6,22 +6,17 @@ package world.homans.blackjack;
  */
 public class Playroom {
 
-    Dealer dealer;
     Player player;
-    Deck deck;
 
     public Playroom() {
-        // TODO
-        this.dealer = new Dealer();
         this.player = new Player();
-        this.deck = new Deck();
     }
 
     /**
      *  Reset the Deck, the Dealer role and the Player Role.
      */
-    public void startGame() {
-        this.deck.shuffle();
-        // TODO More code ...
+    public void newGame() {
+        Game game = new Game(this.player);
+        game.start();
     }
 }
