@@ -1,0 +1,33 @@
+.root {
+    -fx-background-color: #0d8040ff;
+}
+
+.balance-text {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Roboto Slab Medium";
+    -fx-fill: white;
+}
+
+.button {
+    -fx-pref-width: 100pt;
+
+    -fx-border-width: 2;
+    -fx-border-color: cyan;
+    -fx-background-color: transparent;
+
+    -fx-font-family: "Roboto Slab";
+    -fx-font-size: 12pt;
+    -fx-text-fill: cyan;
+}
+
+.chip-button {
+    -fx-pref-width: 50pt;
+
+    -fx-border-width: 2;
+    -fx-border-color: cyan;
+    -fx-background-color: transparent;
+
+    -fx-font-family: "Roboto Slab";
+    -fx-font-size: 12pt;
+    -fx-text-fill: cyan;
+}

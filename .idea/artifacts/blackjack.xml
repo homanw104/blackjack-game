@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="blackjack">
+    <output-path>$PROJECT_DIR$/out/artifacts/blackjack</output-path>
+    <root id="root">
+      <element id="archive" name="blackjack.jar">
+        <element id="module-output" name="blackjack" />
+      </element>
+    </root>
+  </artifact>
+</component>
