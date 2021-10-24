@@ -31,7 +31,7 @@ public class Cardholder {
      * Calculate total points in the hand.
      * @return the biggest points possible under 21. If it's impossible, return the smallest points.
      */
-    public int calculateTotalPoints() {
+    public int getTotalPoints() {
         int points = 0;
         int aceCount = 0;
         for (Card card : hand) {

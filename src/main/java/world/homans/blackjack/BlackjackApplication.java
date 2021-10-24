@@ -3,6 +3,7 @@ package world.homans.blackjack;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,10 +26,11 @@ public class BlackjackApplication extends Application {
         Scene betViewScene = new Scene(fxmlLoader.load(), 960, 540);
 
         PlayroomBetController betController = fxmlLoader.getController();
-        betController.load(player);
+        betController.loadContents(player);
 
         primaryStage = stage;
         stage.setTitle("Blackjack Game");
+        stage.getIcons().add(new Image("/logo.png"));
         stage.setScene(betViewScene);
         stage.show();
     }

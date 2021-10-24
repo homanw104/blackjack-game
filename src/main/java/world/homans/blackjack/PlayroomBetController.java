@@ -19,7 +19,7 @@ public class PlayroomBetController {
      * Initialize a new game for the player.
      * @param player player to been shown on the UI as well as who plays the game
      */
-    public void load(Player player) {
+    public void loadContents(Player player) {
         this.player = player;
         this.game = new Game(player);
     }
@@ -97,7 +97,7 @@ public class PlayroomBetController {
             Scene scene = new Scene(fxmlLoader.load(), 960, 540);
             BlackjackApplication.getPrimaryStage().setScene(scene);
             PlayroomGameController gameController = fxmlLoader.getController();
-            gameController.load(player, game);
+            gameController.loadContents(player, game);
         } catch (Exception e) {
             e.printStackTrace();
         }

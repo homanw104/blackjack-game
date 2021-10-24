@@ -6,7 +6,7 @@ package world.homans.blackjack;
 public class Dealer extends Cardholder {
 
     public void hitTillSeventeen(Deck deck) {
-        while (calculateTotalPoints() < 17) {
+        while (getTotalPoints() < 17) {
             takeCard(deck);
         }
     }

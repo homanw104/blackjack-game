@@ -8,6 +8,12 @@
     -fx-fill: #efefefef;
 }
 
+.point-text {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Roboto Slab";
+    -fx-fill: #111111ff;
+}
+
 .button {
     -fx-pref-width: 100pt;
 

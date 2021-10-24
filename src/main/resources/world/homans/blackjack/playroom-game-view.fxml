@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #0d8040ff;" stylesheets="@../../../css/playroom.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="world.homans.blackjack.PlayroomGameController">
+<VBox alignment="CENTER" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #0d8040ff;" stylesheets="@../../../css/playroom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="world.homans.blackjack.PlayroomGameController">
    <children>
       <HBox alignment="CENTER" minHeight="50.0" prefHeight="50.0" prefWidth="960.0">
          <children>
@@ -17,7 +19,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Text>
-                  <Text fx:id="txtBalance" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="balance-text" text="\$100,000">
+                  <Text fx:id="txtBalance" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="balance-text" text="\$100,000" textAlignment="RIGHT" wrappingWidth="120.0">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -26,7 +28,137 @@
             </HBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="1080.0" prefWidth="960.0" style="-fx-background-color: #0C7A3DFF;" />
+      <HBox alignment="CENTER" prefHeight="1080.0" prefWidth="960.0" style="-fx-background-color: #0C7A3DFF;">
+         <children>
+            <VBox alignment="CENTER" prefWidth="380.0">
+               <children>
+                  <StackPane prefWidth="380.0">
+                     <children>
+                        <ImageView fx:id="dealerCard1" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="-6.0" translateX="20.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="dealerCard2" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="dealerCard3" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="6.0" translateX="-20.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="dealerCard4" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="12.0" translateX="-40.0" translateY="-5.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="dealerCard5" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="18.0" translateX="-60.0" translateY="-10.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="dealerCard6" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="-3.0" translateY="-40.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="dealerCard7" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="3.0" translateX="-20.0" translateY="-40.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="dealerCard8" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="9.0" translateX="-40.0" translateY="-45.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </StackPane>
+                  <StackPane fx:id="dealerPointBanner">
+                     <children>
+                        <SVGPath content="M90.451,23.257,80.416,13.222a1.022,1.022,0,0,1,0-1.444L90.451,1.743A1.021,1.021,0,0,0,89.729,0H1.023A1.021,1.021,0,0,0,.3,1.743L10.336,11.778a1.021,1.021,0,0,1,0,1.444L.3,23.257A1.021,1.021,0,0,0,1.023,25H89.729A1.021,1.021,0,0,0,90.451,23.257Z" fill="#f8dd53" />
+                        <Text fx:id="txtDealerPoint" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="point-text" text="0" textAlignment="CENTER" wrappingWidth="70.0">
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </StackPane>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefWidth="200.0" />
+            <VBox alignment="CENTER" prefWidth="380.0">
+               <children>
+                  <StackPane fx:id="playerPointBanner">
+                     <children>
+                        <SVGPath content="M90.451,23.257,80.416,13.222a1.022,1.022,0,0,1,0-1.444L90.451,1.743A1.021,1.021,0,0,0,89.729,0H1.023A1.021,1.021,0,0,0,.3,1.743L10.336,11.778a1.021,1.021,0,0,1,0,1.444L.3,23.257A1.021,1.021,0,0,0,1.023,25H89.729A1.021,1.021,0,0,0,90.451,23.257Z" fill="#f8dd53" />
+                        <Text fx:id="txtPlayerPoint" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="point-text" text="0" textAlignment="CENTER" wrappingWidth="70.0">
+                           <VBox.margin>
+                              <Insets bottom="40.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="40.0" />
+                     </VBox.margin>
+                  </StackPane>
+                  <StackPane prefWidth="380.0">
+                     <children>
+                        <ImageView fx:id="playerCard1" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="-6.0" translateX="-20.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="playerCard2" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="playerCard3" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="6.0" translateX="20.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="playerCard4" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="12.0" translateX="40.0" translateY="5.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="playerCard5" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="18.0" translateX="60.0" translateY="10.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="playerCard6" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="-3.0" translateY="40.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="playerCard7" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="3.0" translateX="20.0" translateY="40.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="playerCard8" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="9.0" translateX="40.0" translateY="45.0">
+                           <image>
+                              <Image url="@../../../img/card_back_1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="40.0" />
+                     </VBox.margin>
+                  </StackPane>
+               </children></VBox>
+         </children></HBox>
       <HBox alignment="CENTER" minHeight="50.0" prefHeight="50.0" prefWidth="960.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="480.0" spacing="10.0">

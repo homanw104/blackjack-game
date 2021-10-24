@@ -29,4 +29,10 @@ public class Card {
     public int getPoints() {
         return rank.getPoints();
     }
+
+    public String getImageUrl() {
+        String suitPrefix = suit.name().toLowerCase();
+        String rankSuffix = String.valueOf(rank.ordinal() + 1);
+        return "/img/" + suitPrefix + "_" + rankSuffix + ".png";
+    }
 }

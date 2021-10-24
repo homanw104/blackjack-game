@@ -69,35 +69,35 @@ public class Game {
 //    }
 
     public GameStatus checkAfterHit() {
-        if (player.calculateTotalPoints() > 21)
+        if (player.getTotalPoints() > 21)
             return GameStatus.DEALER_WIN;
         return GameStatus.CONTINUE;
     }
 
     public GameStatus checkAfterStand() {
-        if (dealer.calculateTotalPoints() > 21) {
-            if (player.calculateTotalPoints() == 21 && player.getHand().size() == 2)
+        if (dealer.getTotalPoints() > 21) {
+            if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
                 return GameStatus.PLAYER_BLACKJACK;
             else
                 return GameStatus.PLAYER_WIN;
         }
-        else if (dealer.calculateTotalPoints() == 21 && dealer.getHand().size() == 2) {
-            if (player.calculateTotalPoints() == 21 && player.getHand().size() == 2)
+        else if (dealer.getTotalPoints() == 21 && dealer.getHand().size() == 2) {
+            if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
                 return GameStatus.PUSH;
             else
                 return GameStatus.DEALER_BLACKJACK;
         }
-        else if (dealer.calculateTotalPoints() == 21) {
-            if (player.calculateTotalPoints() == 21 && player.getHand().size() == 2)
+        else if (dealer.getTotalPoints() == 21) {
+            if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
                 return GameStatus.PLAYER_BLACKJACK;
-            else if (player.calculateTotalPoints() == 21)
+            else if (player.getTotalPoints() == 21)
                 return GameStatus.PUSH;
             else
                 return GameStatus.DEALER_WIN;
         }
-        else if (dealer.calculateTotalPoints() > player.calculateTotalPoints())
+        else if (dealer.getTotalPoints() > player.getTotalPoints())
             return GameStatus.DEALER_WIN;
-        else if (dealer.calculateTotalPoints() == player.calculateTotalPoints())
+        else if (dealer.getTotalPoints() == player.getTotalPoints())
             return GameStatus.PUSH;
         else
             return GameStatus.PLAYER_WIN;
