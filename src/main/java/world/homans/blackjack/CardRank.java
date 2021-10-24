@@ -52,6 +52,8 @@ public enum CardRank {
             case QUEEN:
             case KING:
                 return 10;
+            case ACE:
+                return 11;
         }
         return 0;
     }

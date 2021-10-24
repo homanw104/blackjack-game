@@ -47,8 +47,8 @@ public class Deck {
     }
 
     /**
-     * Draw and return a card from top of the deck.
-     * @return Card from top of the deck. Null is returned if the deck is empty.
+     * Draw and return a card from top of the deck, card may be null.
+     * @return Card from top of the deck.
      */
     public Card drawCardFromTop() {
         if (this.isEmpty()) {

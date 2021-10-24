@@ -5,8 +5,8 @@ package world.homans.blackjack;
  */
 public class Card {
 
-    private CardSuit suit;
-    private CardRank rank;
+    private final CardSuit suit;
+    private final CardRank rank;
 
     public Card(CardSuit suit, CardRank rank) {
         this.suit = suit;
@@ -22,15 +22,11 @@ public class Card {
         return suit;
     }
 
-    public void setSuit(CardSuit suit) {
-        this.suit = suit;
-    }
-
     public CardRank getRank() {
         return rank;
     }
 
-    public void setRank(CardRank rank) {
-        this.rank = rank;
+    public int getPoints() {
+        return rank.getPoints();
     }
 }

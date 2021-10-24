@@ -5,7 +5,7 @@
 .balance-text {
     -fx-font-size: 14pt;
     -fx-font-family: "Roboto Slab Medium";
-    -fx-fill: white;
+    -fx-fill: #efefefef;
 }
 
 .button {
@@ -30,4 +30,17 @@
     -fx-font-family: "Roboto Slab";
     -fx-font-size: 12pt;
     -fx-text-fill: cyan;
+}
+
+.button:hover {
+    -fx-background-color: #00484848;
+}
+
+.button:pressed {
+    -fx-background-color: #efefef22;
+}
+
+.button:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d1d;
 }

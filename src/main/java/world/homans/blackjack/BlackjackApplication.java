@@ -9,13 +9,32 @@ import java.io.IOException;
 
 public class BlackjackApplication extends Application {
 
+    private final Player player;
+    private static Stage primaryStage;
+
+    /**
+     * The application has exactly one Player role.
+     */
+    public BlackjackApplication() {
+        this.player = new Player();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(BlackjackApplication.class.getResource("playroom-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 960, 540);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("playroom-bet-view.fxml"));
+        Scene betViewScene = new Scene(fxmlLoader.load(), 960, 540);
+
+        PlayroomBetController betController = fxmlLoader.getController();
+        betController.load(player);
+
+        primaryStage = stage;
         stage.setTitle("Blackjack Game");
-        stage.setScene(scene);
+        stage.setScene(betViewScene);
         stage.show();
+    }
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 
     public static void main(String[] args) {

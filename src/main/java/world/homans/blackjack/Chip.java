@@ -1,7 +1,8 @@
 package world.homans.blackjack;
 
 public class Chip {
-    int value;
+
+    private final int value;
 
     public Chip(int value) {
         this.value = value;
