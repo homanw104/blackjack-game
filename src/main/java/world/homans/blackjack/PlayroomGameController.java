@@ -72,7 +72,7 @@ public class PlayroomGameController {
     @FXML
     protected void onStandButtonClick() {
         System.out.println("Player Stand");
-        game.getDealer().hitTillSeventeen(game.getDeck());
+        game.getDealer().hitUntilSeventeen(game.getDeck());
         game.checkAfterStand();
 
         updateScene();
@@ -104,7 +104,7 @@ public class PlayroomGameController {
         game.checkAfterHit();
 
         if (game.getGameStatus() == GameStatus.CONTINUE) {
-            game.getDealer().hitTillSeventeen(game.getDeck());
+            game.getDealer().hitUntilSeventeen(game.getDeck());
             game.checkAfterStand();
         }
 
@@ -118,7 +118,7 @@ public class PlayroomGameController {
      */
     @FXML
     protected void onNewGameButtonClick() {
-        System.out.println("Start a new game");
+        System.out.println("New Game");
         switchToBetScene();
     }
 
@@ -239,7 +239,7 @@ public class PlayroomGameController {
         FXMLLoader fxmlLoader = new FXMLLoader(BlackjackApplication.class.getResource("playroom-bet-view.fxml"));
 
         try {
-            Scene scene = new Scene(fxmlLoader.load(), 960, 540);
+            Scene scene = new Scene(fxmlLoader.load());
             BlackjackApplication.getPrimaryStage().setScene(scene);
         } catch (Exception e) {
             e.printStackTrace();

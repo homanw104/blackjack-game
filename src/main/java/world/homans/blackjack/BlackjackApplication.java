@@ -23,7 +23,7 @@ public class BlackjackApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("playroom-bet-view.fxml"));
-        Scene betViewScene = new Scene(fxmlLoader.load(), 960, 540);
+        Scene betViewScene = new Scene(fxmlLoader.load());
 
         PlayroomBetController betController = fxmlLoader.getController();
         betController.loadContents(player);

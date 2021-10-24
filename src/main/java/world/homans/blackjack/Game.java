@@ -1,5 +1,6 @@
 package world.homans.blackjack;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -56,8 +57,17 @@ public class Game {
      * Calculate current bet value.
      * @return bet value.
      */
-    public int getBet() {
+    public int getCurrentBetValue() {
         return bettingBox.stream().mapToInt(Chip::getValue).sum();
+    }
+
+    /**
+     * Calculate current bet value and format.
+     * @return formatted bet value string e.g. "Bet: $1,000"
+     */
+    public String getCurrentBetValueFormatted() {
+        DecimalFormat formatter = new DecimalFormat("\t$###,###");
+        return "Bet: " + formatter.format(getCurrentBetValue());
     }
 
     /**
@@ -79,28 +89,41 @@ public class Game {
                 gameStatus = GameStatus.PLAYER_BLACKJACK;
             else
                 gameStatus = GameStatus.PLAYER_WIN;
-        }
-        else if (dealer.getTotalPoints() == 21 && dealer.getHand().size() == 2) {
+        } else if (dealer.getTotalPoints() == 21 && dealer.getHand().size() == 2) {
             if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
                 gameStatus = GameStatus.PUSH;
             else
                 gameStatus = GameStatus.DEALER_BLACKJACK;
-        }
-        else if (dealer.getTotalPoints() == 21) {
+        } else if (dealer.getTotalPoints() == 21) {
             if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
                 gameStatus = GameStatus.PLAYER_BLACKJACK;
             else if (player.getTotalPoints() == 21)
                 gameStatus = GameStatus.PUSH;
             else
                 gameStatus = GameStatus.DEALER_WIN;
-        }
-        else if (dealer.getTotalPoints() > player.getTotalPoints())
+        } else if (dealer.getTotalPoints() > player.getTotalPoints()) {
             gameStatus = GameStatus.DEALER_WIN;
-        else if (dealer.getTotalPoints() == player.getTotalPoints())
+        } else if (dealer.getTotalPoints() == player.getTotalPoints()) {
             gameStatus = GameStatus.PUSH;
-        else
+        } else {
             gameStatus = GameStatus.PLAYER_WIN;
+        }
         rewardPlayer();
+    }
+
+    /**
+     * Reward player according to gameStatus and player's previous bet.
+     */
+    private void rewardPlayer() {
+        if (getGameStatus() == GameStatus.PLAYER_BLACKJACK) {
+            player.setBalance(player.getBalance() + player.getBet() * 3);
+        }
+        else if (getGameStatus() == GameStatus.PUSH) {
+            player.setBalance(player.getBalance() + player.getBet());
+        }
+        else if (getGameStatus() == GameStatus.PLAYER_WIN) {
+            player.setBalance(player.getBalance() + player.getBet() * 2);
+        }
     }
 
     public GameStatus getGameStatus() {
@@ -117,20 +140,5 @@ public class Game {
 
     public ArrayList<Chip> getBettingBox() {
         return bettingBox;
-    }
-
-    /**
-     * Reward player according to gameStatus and player's previous bet.
-     */
-    private void rewardPlayer() {
-        if (getGameStatus() == GameStatus.PLAYER_BLACKJACK) {
-            player.setBalance(player.getBalance() + player.getBet() * 3);
-        }
-        else if (getGameStatus() == GameStatus.PUSH) {
-            player.setBalance(player.getBalance() + player.getBet());
-        }
-        else if (getGameStatus() == GameStatus.PLAYER_WIN) {
-            player.setBalance(player.getBalance() + player.getBet() * 2);
-        }
     }
 }

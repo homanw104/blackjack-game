@@ -30,6 +30,11 @@ public class Card {
         return rank.getPoints();
     }
 
+    /**
+     * The image url returned follows the organization of th resource folder.
+     * Modify this method if resources change.
+     * @return the image url of this card
+     */
     public String getImageUrl() {
         String suitPrefix = suit.name().toLowerCase();
         String rankSuffix = String.valueOf(rank.ordinal() + 1);

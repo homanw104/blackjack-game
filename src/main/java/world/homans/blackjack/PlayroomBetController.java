@@ -11,6 +11,7 @@ public class PlayroomBetController {
     Player player;
     Game game;
 
+    @FXML Text txtBetValue;
     @FXML Text txtBalance;
     @FXML Button btnDeal;
     @FXML Button btnCancel;
@@ -32,8 +33,7 @@ public class PlayroomBetController {
     protected void onBet100ChipClicked() {
         System.out.println("Add a $100 chip to the bet");
         game.increaseBet(new Chip(100));
-        btnCancel.setDisable(false);
-        btnDeal.setDisable(false);
+        updateScene();
     }
 
     /**
@@ -43,8 +43,7 @@ public class PlayroomBetController {
     protected void onBet500ChipClicked() {
         System.out.println("Add a $500 chip to the bet");
         game.increaseBet(new Chip(500));
-        btnCancel.setDisable(false);
-        btnDeal.setDisable(false);
+        updateScene();
     }
 
     /**
@@ -54,8 +53,7 @@ public class PlayroomBetController {
     protected void onBet1000ChipClicked() {
         System.out.println("Add a $1000 chip to the bet");
         game.increaseBet(new Chip(1000));
-        btnCancel.setDisable(false);
-        btnDeal.setDisable(false);
+        updateScene();
     }
 
     /**
@@ -65,8 +63,7 @@ public class PlayroomBetController {
     protected void onBet5000ChipClicked() {
         System.out.println("Add a $5000 chip to the bet");
         game.increaseBet(new Chip(5000));
-        btnCancel.setDisable(false);
-        btnDeal.setDisable(false);
+        updateScene();
     }
 
     /**
@@ -76,8 +73,7 @@ public class PlayroomBetController {
     protected void onCancelButtonClick() {
         System.out.println("Bet Canceled");
         game.clearBet();
-        btnCancel.setDisable(true);
-        btnDeal.setDisable(true);
+        updateScene();
     }
 
     /**
@@ -96,13 +92,21 @@ public class PlayroomBetController {
      * Update player's balance in the scene.
      */
     private void updateScene() {
+        if (game.getCurrentBetValue() == 0) {
+            btnCancel.setDisable(true);
+            btnDeal.setDisable(true);
+        } else {
+            btnCancel.setDisable(false);
+            btnDeal.setDisable(false);
+        }
+        txtBetValue.setText(game.getCurrentBetValueFormatted());
         txtBalance.setText(player.getBalanceFormatted());
     }
 
     private void switchToGameScene() {
         FXMLLoader fxmlLoader = new FXMLLoader(BlackjackApplication.class.getResource("playroom-game-view.fxml"));
         try {
-            Scene scene = new Scene(fxmlLoader.load(), 960, 540);
+            Scene scene = new Scene(fxmlLoader.load());
             BlackjackApplication.getPrimaryStage().setScene(scene);
             PlayroomGameController gameController = fxmlLoader.getController();
             gameController.loadContents(player, game);
