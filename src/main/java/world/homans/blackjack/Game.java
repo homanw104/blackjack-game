@@ -93,7 +93,7 @@ public class Game {
             if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
                 gameStatus = GameStatus.PUSH;
             else
-                gameStatus = GameStatus.DEALER_BLACKJACK;
+                gameStatus = GameStatus.DEALER_WIN;
         } else if (dealer.getTotalPoints() == 21) {
             if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
                 gameStatus = GameStatus.PLAYER_BLACKJACK;
@@ -106,7 +106,10 @@ public class Game {
         } else if (dealer.getTotalPoints() == player.getTotalPoints()) {
             gameStatus = GameStatus.PUSH;
         } else {
-            gameStatus = GameStatus.PLAYER_WIN;
+            if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
+                gameStatus = GameStatus.PLAYER_BLACKJACK;
+            else
+                gameStatus = GameStatus.PLAYER_WIN;
         }
         rewardPlayer();
     }

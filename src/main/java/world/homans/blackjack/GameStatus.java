@@ -5,7 +5,6 @@ public enum GameStatus {
     PLAYER_WIN,
     DEALER_WIN,
     PLAYER_BLACKJACK,
-    DEALER_BLACKJACK,
     PLAYER_BUSTED,
     PUSH
 }

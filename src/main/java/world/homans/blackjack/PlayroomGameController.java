@@ -205,7 +205,6 @@ public class PlayroomGameController {
                 txtLoseInfo.setText("BUSTED...");
                 break;
             case DEALER_WIN:
-            case DEALER_BLACKJACK:
                 loseBanner.setVisible(true);
                 txtWinInfo.setText("YOU LOSE");
                 break;
@@ -223,7 +222,6 @@ public class PlayroomGameController {
             case PLAYER_BLACKJACK:
             case PLAYER_BUSTED:
             case DEALER_WIN:
-            case DEALER_BLACKJACK:
                 btnStand.setDisable(true);
                 btnHit.setDisable(true);
                 btnDouble.setDisable(true);
