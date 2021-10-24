@@ -44,6 +44,10 @@ public class Cardholder {
         return points;
     }
 
+    public void clearHand() {
+        hand.clear();
+    }
+
     public ArrayList<Card> getHand() {
         return hand;
     }

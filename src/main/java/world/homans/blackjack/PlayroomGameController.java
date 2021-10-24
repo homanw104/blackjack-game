@@ -25,9 +25,14 @@ public class PlayroomGameController {
     @FXML StackPane playerPointBanner;
     @FXML StackPane dealerPointBanner;
 
+    @FXML Text txtWinInfo;
+    @FXML Text txtLoseInfo;
+    @FXML StackPane winBanner;
+    @FXML StackPane loseBanner;
+
     @FXML Button btnStand;
     @FXML Button btnDouble;
-    @FXML Button btnSurrender;
+    @FXML Button btnNewGame;
     @FXML Button btnHit;
 
     @FXML ImageView playerCard1;
@@ -56,7 +61,9 @@ public class PlayroomGameController {
     public void loadContents(Player player, Game game) {
         this.player = player;
         this.game = game;
+
         updateScene();
+        updateButtonStatus();
     }
 
     /**
@@ -67,7 +74,9 @@ public class PlayroomGameController {
         System.out.println("Player Stand");
         game.getDealer().hitTillSeventeen(game.getDeck());
         game.checkAfterStand();
+
         updateScene();
+        updateButtonStatus();
     }
 
     /**
@@ -78,7 +87,9 @@ public class PlayroomGameController {
         System.out.println("Player Hit");
         player.hit(game.getDeck());
         game.checkAfterHit();
+
         updateScene();
+        updateButtonStatus();
     }
 
     /**
@@ -87,21 +98,32 @@ public class PlayroomGameController {
     @FXML
     protected void onDoubleButtonClick() {
         System.out.println("Player Double");
+
         player.doubleDeal();
+        player.hit(game.getDeck());
+        game.checkAfterHit();
+
+        if (game.getGameStatus() == GameStatus.CONTINUE) {
+            game.getDealer().hitTillSeventeen(game.getDeck());
+            game.checkAfterStand();
+        }
+
+        btnDouble.setDisable(true);
         updateScene();
+        updateButtonStatus();
     }
 
     /**
-     * Player surrender. Forfeit half the bet and end the hand immediately.
+     * Switch to bet scene if user choose to start a new game.
      */
     @FXML
-    protected void onSurrenderButtonClick() {
-        System.out.println("Player Surrendered");
-        updateScene();
+    protected void onNewGameButtonClick() {
+        System.out.println("Start a new game");
+        switchToBetScene();
     }
 
     /**
-     * Update cards' image and player's balance in the scene.
+     * Update cards' image, player's balance and all banners in the scene.
      */
     private void updateScene() {
         /* These lists help keep track of all the cards displayed on the UI. */
@@ -113,9 +135,6 @@ public class PlayroomGameController {
                 List.of(dealerCard1, dealerCard2, dealerCard3, dealerCard4,
                         dealerCard5, dealerCard6, dealerCard7, dealerCard8)
         );
-
-        /* Update player's balance. */
-        txtBalance.setText(player.getBalanceFormatted());
 
         /* Update player's hand. */
         Iterator<Card> playerHand = player.getHand().iterator();
@@ -138,7 +157,10 @@ public class PlayroomGameController {
                 Image image = new Image(Objects.requireNonNull(getClass().getResource(url)).toString());
 
                 /* Set the second card to be hidden if dealer have 2 cards. */
-                if (game.getDealer().getHand().size() == 2 && !dealerHandIter.hasNext()) {
+                if (game.getDealer().getHand().size() == 2
+                        && game.getGameStatus() == GameStatus.CONTINUE
+                        && !dealerHandIter.hasNext()
+                ) {
                     url = "/img/card_back_1.png";
                     image = new Image(Objects.requireNonNull(getClass().getResource(url)).toString());
                 }
@@ -150,27 +172,82 @@ public class PlayroomGameController {
             }
         }
 
+        /* Update player's balance. */
+        txtBalance.setText(player.getBalanceFormatted());
+
         /* Update player's point. */
         txtPlayerPoint.setText(String.valueOf(player.getTotalPoints()));
 
         /* Update dealer's point. Hide dealer's point banner if dealer have 2 cards. */
-        if (game.getDealer().getHand().size() == 2) {
+        if (game.getDealer().getHand().size() == 2 && game.getGameStatus() == GameStatus.CONTINUE) {
             dealerPointBanner.setVisible(false);
         } else {
             dealerPointBanner.setVisible(true);
             txtDealerPoint.setText(String.valueOf(game.getDealer().getTotalPoints()));
         }
+
+        /* Update game status banner */
+        switch (game.getGameStatus()) {
+            case PUSH:
+                loseBanner.setVisible(true);
+                txtLoseInfo.setText("PUSH...");
+                break;
+            case PLAYER_WIN:
+                winBanner.setVisible(true);
+                txtWinInfo.setText("YOU WIN!");
+                break;
+            case PLAYER_BLACKJACK:
+                winBanner.setVisible(true);
+                txtWinInfo.setText("BLACKJACK!");
+                break;
+            case PLAYER_BUSTED:
+                loseBanner.setVisible(true);
+                txtLoseInfo.setText("BUSTED...");
+                break;
+            case DEALER_WIN:
+            case DEALER_BLACKJACK:
+                loseBanner.setVisible(true);
+                txtWinInfo.setText("YOU LOSE");
+                break;
+            case CONTINUE:
+        }
+    }
+
+    /**
+     * Update buttons' status base on gameStatus.
+     */
+    private void updateButtonStatus() {
+        switch (game.getGameStatus()) {
+            case PUSH:
+            case PLAYER_WIN:
+            case PLAYER_BLACKJACK:
+            case PLAYER_BUSTED:
+            case DEALER_WIN:
+            case DEALER_BLACKJACK:
+                btnStand.setDisable(true);
+                btnHit.setDisable(true);
+                btnDouble.setDisable(true);
+                btnNewGame.setVisible(true);
+                break;
+            case CONTINUE:
+                if (player.getHand().size() > 2)
+                    btnDouble.setDisable(true);
+        }
     }
 
     private void switchToBetScene() {
         FXMLLoader fxmlLoader = new FXMLLoader(BlackjackApplication.class.getResource("playroom-bet-view.fxml"));
+
         try {
             Scene scene = new Scene(fxmlLoader.load(), 960, 540);
             BlackjackApplication.getPrimaryStage().setScene(scene);
-            PlayroomBetController betController = fxmlLoader.getController();
-            betController.loadContents(player);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        player.clearBet();
+        player.clearHand();
+        PlayroomBetController betController = fxmlLoader.getController();
+        betController.loadContents(player);
     }
 }

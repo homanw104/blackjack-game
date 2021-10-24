@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #0d8040ff;" stylesheets="@../../../css/playroom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="world.homans.blackjack.PlayroomGameController">
@@ -152,6 +152,18 @@
                               <Image url="@../../../img/card_back_1.png" />
                            </image>
                         </ImageView>
+                        <StackPane fx:id="winBanner" visible="false">
+                           <children>
+                              <SVGPath content="M220.31,23.257,210.275,13.222a1.022,1.022,0,0,1,0-1.444L220.31,1.743A1.021,1.021,0,0,0,219.588,0H1.023A1.021,1.021,0,0,0,.3,1.743L10.336,11.778a1.021,1.021,0,0,1,0,1.444L.3,23.257A1.021,1.021,0,0,0,1.023,25H219.588A1.021,1.021,0,0,0,220.31,23.257Z" fill="#f8dd53" />
+                              <Text fx:id="txtWinInfo" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="win-banner-text" text="BLACKJACK!" />
+                           </children>
+                        </StackPane>
+                        <StackPane fx:id="loseBanner" visible="false">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fe48b3" height="25.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="220.0" />
+                              <Text fx:id="txtLoseInfo" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lose-banner-text" text="YOU LOSE" />
+                           </children>
+                        </StackPane>
                      </children>
                      <VBox.margin>
                         <Insets bottom="40.0" />
@@ -165,7 +177,7 @@
                <children>
                    <Button fx:id="btnStand" onAction="#onStandButtonClick" prefWidth="105.0" text="STAND" />
                   <Button fx:id="btnDouble" onAction="#onDoubleButtonClick" prefWidth="105.0" text="DOUBLE" />
-                  <Button fx:id="btnSurrender" mnemonicParsing="false" onAction="#onSurrenderButtonClick" text="SURRENDER" />
+                  <Button fx:id="btnNewGame" mnemonicParsing="false" onAction="#onNewGameButtonClick" text="NEW GAME" visible="false" />
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />

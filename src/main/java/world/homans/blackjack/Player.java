@@ -16,20 +16,39 @@ public class Player extends Cardholder {
         this.bet = 0;
     }
 
+    /**
+     * Player deals the bet and cost equivalent value of chips.
+     * Player will remember his bet in this.bet.
+     * @param chips The stack of chips that player deals
+     */
     public void deal(ArrayList<Chip> chips) {
         chips.forEach(chip -> bet += chip.getValue());
         balance -= bet;
-        setBet(bet);
     }
 
+    /**
+     * Player doubled the bet by directly cost from his balance.
+     * Player will remember his bet in this.bet.
+     */
     public void doubleDeal() {
         balance -= bet;
-        bet = 2 * bet;
-        setBet(bet);
+        bet *= 2;
     }
 
+    /**
+     * Player hit the deck by taking a card from the deck.
+     * @param deck the deck where the card is taken
+     */
     public void hit(Deck deck) {
         takeCard(deck);
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public void clearBet() {
+        bet = 0;
     }
 
     public int getBet() {
@@ -38,14 +57,6 @@ public class Player extends Cardholder {
 
     public int getBalance() {
         return balance;
-    }
-
-    public void setBet(int bet) {
-        this.bet = bet;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
     }
 
     public String getBalanceFormatted() {

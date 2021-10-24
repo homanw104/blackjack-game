@@ -8,10 +8,16 @@
     -fx-fill: #efefefef;
 }
 
-.point-text {
+.win-banner-text .point-text {
     -fx-font-size: 12pt;
     -fx-font-family: "Roboto Slab";
     -fx-fill: #111111ff;
+}
+
+.lose-banner-text {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Roboto Slab";
+    -fx-fill: #efefefef;
 }
 
 .button {

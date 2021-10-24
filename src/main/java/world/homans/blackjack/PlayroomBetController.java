@@ -22,6 +22,7 @@ public class PlayroomBetController {
     public void loadContents(Player player) {
         this.player = player;
         this.game = new Game(player);
+        updateScene();
     }
 
     /**
@@ -29,10 +30,10 @@ public class PlayroomBetController {
      */
     @FXML
     protected void onBet100ChipClicked() {
+        System.out.println("Add a $100 chip to the bet");
         game.increaseBet(new Chip(100));
         btnCancel.setDisable(false);
         btnDeal.setDisable(false);
-        System.out.println("Add a $100 chip to the bet");
     }
 
     /**
@@ -40,10 +41,10 @@ public class PlayroomBetController {
      */
     @FXML
     protected void onBet500ChipClicked() {
+        System.out.println("Add a $500 chip to the bet");
         game.increaseBet(new Chip(500));
         btnCancel.setDisable(false);
         btnDeal.setDisable(false);
-        System.out.println("Add a $500 chip to the bet");
     }
 
     /**
@@ -51,10 +52,10 @@ public class PlayroomBetController {
      */
     @FXML
     protected void onBet1000ChipClicked() {
+        System.out.println("Add a $1000 chip to the bet");
         game.increaseBet(new Chip(1000));
         btnCancel.setDisable(false);
         btnDeal.setDisable(false);
-        System.out.println("Add a $1000 chip to the bet");
     }
 
     /**
@@ -62,10 +63,10 @@ public class PlayroomBetController {
      */
     @FXML
     protected void onBet5000ChipClicked() {
+        System.out.println("Add a $5000 chip to the bet");
         game.increaseBet(new Chip(5000));
         btnCancel.setDisable(false);
         btnDeal.setDisable(false);
-        System.out.println("Add a $5000 chip to the bet");
     }
 
     /**
@@ -73,10 +74,10 @@ public class PlayroomBetController {
      */
     @FXML
     protected void onCancelButtonClick() {
+        System.out.println("Bet Canceled");
         game.clearBet();
         btnCancel.setDisable(true);
         btnDeal.setDisable(true);
-        System.out.println("Bet Canceled");
     }
 
     /**
@@ -85,10 +86,17 @@ public class PlayroomBetController {
      */
     @FXML
     protected void onDealButtonClick() {
+        System.out.println("Bet Dealt Game Start");
         player.deal(game.getBettingBox());
         game.start();
         switchToGameScene();
-        System.out.println("Bet Dealt Game Start");
+    }
+
+    /**
+     * Update player's balance in the scene.
+     */
+    private void updateScene() {
+        txtBalance.setText(player.getBalanceFormatted());
     }
 
     private void switchToGameScene() {

@@ -7,11 +7,11 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    private final Player player;        /* Player object will be passed from the Controller */
-    private Dealer dealer;              /* Each game has a new dealer. */
-    private Deck deck;                  /* Each game uses a new deck of card. */
-    private ArrayList<Chip> bettingBox; /* Stores a set of chips the player bet on this game. */
-    private GameStatus gameStatus;      /* Game status. */
+    private final Player player;                /* Player object will be passed from the Controller */
+    private final Dealer dealer;                /* Each game has a new dealer. */
+    private final Deck deck;                    /* Each game uses a new deck of card. */
+    private final ArrayList<Chip> bettingBox;   /* Stores a set of chips the player bet on this game. */
+    private GameStatus gameStatus;              /* Game status. */
 
     /**
      * When a player join the Game, a new Deck, a new Dealer is prepared.
@@ -23,10 +23,11 @@ public class Game {
         this.dealer = new Dealer();
         this.bettingBox = new ArrayList<>();
         this.player = player;
+        this.gameStatus = GameStatus.CONTINUE;
     }
 
     /**
-     * Game start. Shuffle the deck. Dealer and player draw 2 cards from the deck each.
+     * Game start. Shuffle the deck. Dealer and player draw 2 cards each from the deck.
      */
     public void start() {
         deck.shuffle();
@@ -58,61 +59,48 @@ public class Game {
     public int getBet() {
         return bettingBox.stream().mapToInt(Chip::getValue).sum();
     }
-//    public GameStatus checkAfterInit() {
-//        if (player.calculateTotalPoints() == 21 && dealer.calculateTotalPoints() == 21)
-//            return GameStatus.PUSH;
-//        else if (player.calculateTotalPoints() == 21)
-//            return GameStatus.PLAYER_BLACKJACK;
-//        else if (dealer.calculateTotalPoints() == 21)
-//            return GameStatus.DEALER_BLACKJACK;
-//        return GameStatus.CONTINUE;
-//    }
 
-    public GameStatus checkAfterHit() {
+    /**
+     * Update gameStatus based on whether player has busted.
+     */
+    public void checkAfterHit() {
         if (player.getTotalPoints() > 21)
-            return GameStatus.DEALER_WIN;
-        return GameStatus.CONTINUE;
+            gameStatus = GameStatus.PLAYER_BUSTED;
+        else
+            gameStatus = GameStatus.CONTINUE;
     }
 
-    public GameStatus checkAfterStand() {
+    /**
+     * Update gameStatus based on player and dealer's hands.
+     */
+    public void checkAfterStand() {
         if (dealer.getTotalPoints() > 21) {
             if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
-                return GameStatus.PLAYER_BLACKJACK;
+                gameStatus = GameStatus.PLAYER_BLACKJACK;
             else
-                return GameStatus.PLAYER_WIN;
+                gameStatus = GameStatus.PLAYER_WIN;
         }
         else if (dealer.getTotalPoints() == 21 && dealer.getHand().size() == 2) {
             if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
-                return GameStatus.PUSH;
+                gameStatus = GameStatus.PUSH;
             else
-                return GameStatus.DEALER_BLACKJACK;
+                gameStatus = GameStatus.DEALER_BLACKJACK;
         }
         else if (dealer.getTotalPoints() == 21) {
             if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
-                return GameStatus.PLAYER_BLACKJACK;
+                gameStatus = GameStatus.PLAYER_BLACKJACK;
             else if (player.getTotalPoints() == 21)
-                return GameStatus.PUSH;
+                gameStatus = GameStatus.PUSH;
             else
-                return GameStatus.DEALER_WIN;
+                gameStatus = GameStatus.DEALER_WIN;
         }
         else if (dealer.getTotalPoints() > player.getTotalPoints())
-            return GameStatus.DEALER_WIN;
+            gameStatus = GameStatus.DEALER_WIN;
         else if (dealer.getTotalPoints() == player.getTotalPoints())
-            return GameStatus.PUSH;
+            gameStatus = GameStatus.PUSH;
         else
-            return GameStatus.PLAYER_WIN;
-    }
-
-    private void checkBet() {
-        if (getGameStatus() == GameStatus.PLAYER_BLACKJACK) {
-            player.setBalance(player.getBalance() + player.getBet() * 3);
-        }
-        else if (getGameStatus() == GameStatus.PUSH) {
-            player.setBalance(player.getBalance() + player.getBet());
-        }
-        else if (getGameStatus() == GameStatus.PLAYER_WIN) {
-            player.setBalance(player.getBalance() + player.getBet() * 2);
-        }
+            gameStatus = GameStatus.PLAYER_WIN;
+        rewardPlayer();
     }
 
     public GameStatus getGameStatus() {
@@ -123,27 +111,26 @@ public class Game {
         return dealer;
     }
 
-    public void setDealer(Dealer dealer) {
-        this.dealer = dealer;
-    }
-
     public Deck getDeck() {
         return deck;
-    }
-
-    public void setDeck(Deck deck) {
-        this.deck = deck;
     }
 
     public ArrayList<Chip> getBettingBox() {
         return bettingBox;
     }
 
-    public void setBettingBox(ArrayList<Chip> bettingBox) {
-        this.bettingBox = bettingBox;
-    }
-
-    public void setGameStatus(GameStatus gameStatus) {
-        this.gameStatus = gameStatus;
+    /**
+     * Reward player according to gameStatus and player's previous bet.
+     */
+    private void rewardPlayer() {
+        if (getGameStatus() == GameStatus.PLAYER_BLACKJACK) {
+            player.setBalance(player.getBalance() + player.getBet() * 3);
+        }
+        else if (getGameStatus() == GameStatus.PUSH) {
+            player.setBalance(player.getBalance() + player.getBet());
+        }
+        else if (getGameStatus() == GameStatus.PLAYER_WIN) {
+            player.setBalance(player.getBalance() + player.getBet() * 2);
+        }
     }
 }

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #0d8040ff;" stylesheets="@../../../css/playroom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="world.homans.blackjack.PlayroomBetController">
+<VBox alignment="CENTER" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #0d8040ff;" stylesheets="@../../../css/playroom.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="world.homans.blackjack.PlayroomBetController">
    <children>
       <HBox alignment="CENTER" minHeight="50.0" prefHeight="50.0" prefWidth="960.0">
          <children>
@@ -17,7 +17,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Text>
-                  <Text fx:id="txtBalance" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="balance-text" text="\$100,000" textAlignment="RIGHT" wrappingWidth="100.0">
+                  <Text fx:id="txtBalance" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="balance-text" text="\$100,000" textAlignment="RIGHT" wrappingWidth="120.0">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
