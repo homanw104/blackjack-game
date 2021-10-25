@@ -6,7 +6,7 @@
 
     <groupId>world.homans</groupId>
     <artifactId>blackjack</artifactId>
-    <version>0.1</version>
+    <version>1.0</version>
 
     <properties>
         <junit.version>5.8.1</junit.version>
@@ -78,6 +78,15 @@
                         </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <stripDebug>true</stripDebug>
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <noManPages>true</noManPages>
+                    <launcher>launcher</launcher>
+                    <jlinkImageName>blackjack</jlinkImageName>
+                    <mainClass>world.homans.blackjack.BlackjackApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

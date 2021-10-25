@@ -89,11 +89,6 @@ public class Game {
                 gameStatus = GameStatus.PLAYER_BLACKJACK;
             else
                 gameStatus = GameStatus.PLAYER_WIN;
-        } else if (dealer.getTotalPoints() == 21 && dealer.getHand().size() == 2) {
-            if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
-                gameStatus = GameStatus.PUSH;
-            else
-                gameStatus = GameStatus.DEALER_WIN;
         } else if (dealer.getTotalPoints() == 21) {
             if (player.getTotalPoints() == 21 && player.getHand().size() == 2)
                 gameStatus = GameStatus.PLAYER_BLACKJACK;

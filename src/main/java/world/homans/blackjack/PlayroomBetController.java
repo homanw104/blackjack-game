@@ -2,6 +2,7 @@ package world.homans.blackjack;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
@@ -106,12 +107,12 @@ public class PlayroomBetController {
     private void switchToGameScene() {
         FXMLLoader fxmlLoader = new FXMLLoader(BlackjackApplication.class.getResource("playroom-game-view.fxml"));
         try {
-            Scene scene = new Scene(fxmlLoader.load());
-            BlackjackApplication.getPrimaryStage().setScene(scene);
-            PlayroomGameController gameController = fxmlLoader.getController();
-            gameController.loadContents(player, game);
+            Parent root = fxmlLoader.load();
+            BlackjackApplication.getPrimaryStage().getScene().setRoot(root);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        PlayroomGameController gameController = fxmlLoader.getController();
+        gameController.loadContents(player, game);
     }
 }

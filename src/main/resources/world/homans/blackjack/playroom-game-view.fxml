@@ -7,12 +7,12 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #0d8040ff;" stylesheets="@../../../css/playroom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="world.homans.blackjack.PlayroomGameController">
+<VBox alignment="CENTER" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #0d8040ff;" stylesheets="@../../../css/playroom.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="world.homans.blackjack.PlayroomGameController">
    <children>
-      <HBox alignment="CENTER" minHeight="50.0" prefHeight="50.0" prefWidth="960.0">
+      <HBox alignment="CENTER" minHeight="50.0" minWidth="960.0">
          <children>
-            <HBox prefHeight="50.0" prefWidth="480.0" />
-            <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="480.0">
+            <HBox minHeight="50.0" minWidth="480.0" />
+            <HBox alignment="CENTER_RIGHT" minHeight="50.0" minWidth="480.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="balance-text" text="BALANCE">
                      <HBox.margin>
@@ -28,11 +28,11 @@
             </HBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="1080.0" prefWidth="960.0" style="-fx-background-color: #0C7A3DFF;">
+      <HBox alignment="CENTER" minHeight="440.0" minWidth="960.0" prefHeight="1080.0" style="-fx-background-color: #0C7A3DFF;">
          <children>
-            <VBox alignment="CENTER" prefWidth="380.0">
+            <VBox alignment="CENTER" minWidth="380.0">
                <children>
-                  <StackPane prefWidth="380.0">
+                  <StackPane minWidth="380.0">
                      <children>
                         <ImageView fx:id="dealerCard1" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="-6.0" translateX="20.0">
                            <image>
@@ -94,8 +94,8 @@
                   </StackPane>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefWidth="200.0" />
-            <VBox alignment="CENTER" prefWidth="380.0">
+            <VBox alignment="CENTER" minWidth="200.0" />
+            <VBox alignment="CENTER" minWidth="380.0">
                <children>
                   <StackPane fx:id="playerPointBanner">
                      <children>
@@ -110,7 +110,7 @@
                         <Insets bottom="40.0" />
                      </VBox.margin>
                   </StackPane>
-                  <StackPane prefWidth="380.0">
+                  <StackPane minWidth="380.0">
                      <children>
                         <ImageView fx:id="playerCard1" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="-6.0" translateX="-20.0">
                            <image>
@@ -171,19 +171,19 @@
                   </StackPane>
                </children></VBox>
          </children></HBox>
-      <HBox alignment="CENTER" minHeight="50.0" prefHeight="50.0" prefWidth="960.0">
+      <HBox alignment="CENTER" minHeight="50.0" minWidth="960.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="480.0" spacing="10.0">
+            <HBox alignment="CENTER_LEFT" minHeight="50.0" minWidth="480.0" spacing="10.0">
                <children>
-                   <Button fx:id="btnStand" onAction="#onStandButtonClick" prefWidth="105.0" text="STAND" />
-                  <Button fx:id="btnDouble" onAction="#onDoubleButtonClick" prefWidth="105.0" text="DOUBLE" />
+                   <Button fx:id="btnStand" onAction="#onStandButtonClick" text="STAND" />
+                  <Button fx:id="btnDouble" onAction="#onDoubleButtonClick" text="DOUBLE" />
                   <Button fx:id="btnNewGame" mnemonicParsing="false" onAction="#onNewGameButtonClick" text="NEW GAME" visible="false" />
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="480.0" spacing="10.0">
+            <HBox alignment="CENTER_RIGHT" minHeight="50.0" minWidth="480.0" spacing="10.0">
                <children>
                   <Button fx:id="btnHit" mnemonicParsing="false" onAction="#onHitButtonClick" text="HIT" />
                </children>
