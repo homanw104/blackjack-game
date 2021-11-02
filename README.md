@@ -3,6 +3,17 @@
 A single-player blackjack game designed using
 OOAD practices, powered by **JavaFX**.
 
+## Features
+
+The application contains two scene: playroom-bet-view and playroom-game-view,
+each has a corresponding controller manipulating the Game, the Player, the
+Dealer and the Deck! Player can stand, double or hit during the game.
+Splitting is not yet supported.
+
+![img_0.png](assets/img_0.png)
+![img_1.png](assets/img_1.png)
+![img_2.png](assets/img_2.png)
+
 ## Setup development environment
 
 The project is built with **JavaFX**. To set up a development environment,

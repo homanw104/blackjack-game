@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
- * Player class.
+ * Player knows his balance and the bet value of current game.
  */
 public class Player extends Cardholder {
 

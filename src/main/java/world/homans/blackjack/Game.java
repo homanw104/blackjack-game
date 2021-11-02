@@ -4,7 +4,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
- * Game class runs a single blackjack game.
+ * Game class runs a single blackjack game session.
+ * A game session is to be destroyed when the game ends.
  */
 public class Game {
 

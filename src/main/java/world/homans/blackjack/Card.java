@@ -31,8 +31,8 @@ public class Card {
     }
 
     /**
-     * The image url returned follows the organization of th resource folder.
-     * Modify this method if resources change.
+     * The image url follows the structure of resource folder.
+     * Modify this method when resource directory changes.
      * @return the image url of this card
      */
     public String getImageUrl() {

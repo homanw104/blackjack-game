@@ -6,21 +6,21 @@ import java.util.Collections;
 /**
  * A deck of cards - 52 cards at most.
  * When initialized, the Deck is ordered from SPADE to DIAMOND, A to K.
- * You may want to call shuffle() before drawing a card.
+ * You may call shuffle() before drawing a card.
  */
 public class Deck {
 
     private ArrayList<Card> cards;
 
     /**
-     * Initialize a new ordered 52-card deck.
+     * Initialize a newly ordered 52-card deck.
      */
     public Deck() {
         this.reset();
     }
 
     /**
-     * Reset the deck into a list of 52 unique & ordered cards.
+     * Reset the deck into a newly ordered 52-card deck.
      */
     public void reset() {
         cards = new ArrayList<>();
