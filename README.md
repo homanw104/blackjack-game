@@ -7,7 +7,7 @@ OOAD practices, powered by **JavaFX**.
 
 The application contains two scene: playroom-bet-view and playroom-game-view,
 each has a corresponding controller manipulating the Game, the Player, the
-Dealer and the Deck! Player can stand, double or hit during the game.
+Dealer and the Deck. Player can stand, double or hit during the game.
 Splitting is not yet supported.
 
 ![img_0.png](assets/img_0.png)
@@ -17,20 +17,19 @@ Splitting is not yet supported.
 ## Setup development environment
 
 The project is built with **JavaFX**. To set up a development environment,
-and to have a well understanding on JavaFX project structure, check
-[Help On JavaFX](https://jetbrains.com/help/idea/javafx.html)
-from *IntelliJ IDEA Edu* for reference!
+check [Help On JavaFX](https://jetbrains.com/help/idea/javafx.html)
+from *IntelliJ IDEA Edu* which is well documented.
 
-## Build and package
+## Building and packaging
 
-You can run this project by clicking on the maven target `javafx:run` if
-everything has set up correctly in `pom.xml`. However, if you wish to
-build this project into a one-click executable, you need to manually set
+You can run this project by running the maven target `javafx:run` if
+everything is set up correctly in `pom.xml`. If you wish to build
+this project into an one-click executable, you need to manually set
 up an artifact in **Project Structure...** in IDEA.
 
 Before doing custom packaging, you need to
 [download](https://gluonhq.com/products/javafx/) OpenJFX since JavaFX is
-no longer bundled in JDK from version 9. OpenJFX version 17 is recommended.
+no longer bundled in JDK since version 9. OpenJFX version 17 is recommended.
 
 Steps to produce a standalone jar executable:
 
@@ -49,5 +48,5 @@ Steps to produce a standalone jar executable:
    **Build Artifacts...** | **Build**, the output file is under
    `/out/artifacts`
 
-If you also wish to convert the jar file into a Windows executable,
-you can use [launch4j](http://launch4j.sourceforge.net/).
+P.S. If you wish to convert the jar file into a Windows executable,
+you could use [launch4j](http://launch4j.sourceforge.net/).
