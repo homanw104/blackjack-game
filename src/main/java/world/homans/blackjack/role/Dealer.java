@@ -1,4 +1,6 @@
-package world.homans.blackjack;
+package world.homans.blackjack.role;
+
+import world.homans.blackjack.deck.Deck;
 
 /**
  * Dealer class.

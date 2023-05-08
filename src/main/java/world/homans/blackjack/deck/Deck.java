@@ -1,4 +1,4 @@
-package world.homans.blackjack;
+package world.homans.blackjack.deck;
 
 import java.util.ArrayList;
 import java.util.Collections;

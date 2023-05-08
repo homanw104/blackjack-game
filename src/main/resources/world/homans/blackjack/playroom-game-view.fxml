@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #0d8040ff;" stylesheets="@../../../css/playroom.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="world.homans.blackjack.PlayroomGameController">
+<VBox alignment="CENTER" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #0d8040ff;" stylesheets="@../../../css/playroom.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="world.homans.blackjack.controller.PlayroomGameController">
    <children>
       <HBox alignment="CENTER" minHeight="50.0" minWidth="960.0">
          <children>

@@ -1,11 +1,14 @@
-package world.homans.blackjack;
+package world.homans.blackjack.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import world.homans.blackjack.BlackjackApplication;
+import world.homans.blackjack.game.Chip;
+import world.homans.blackjack.game.Game;
+import world.homans.blackjack.role.Player;
 
 public class PlayroomBetController {
 
@@ -84,7 +87,7 @@ public class PlayroomBetController {
     @FXML
     protected void onDealButtonClick() {
         System.out.println("Bet Dealt Game Start");
-        player.deal(game.getBettingBox());
+        player.deal(game.getChips());
         game.start();
         switchToGameScene();
     }

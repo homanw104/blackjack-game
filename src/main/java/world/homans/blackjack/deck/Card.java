@@ -1,4 +1,4 @@
-package world.homans.blackjack;
+package world.homans.blackjack.deck;
 
 /**
  * A single playing card with a suit and a rank.

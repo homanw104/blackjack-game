@@ -1,4 +1,4 @@
-package world.homans.blackjack;
+package world.homans.blackjack.game;
 
 /**
  * Game is considered end when GameStatus is other than CONTINUE.

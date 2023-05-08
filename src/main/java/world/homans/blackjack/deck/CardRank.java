@@ -1,4 +1,4 @@
-package world.homans.blackjack;
+package world.homans.blackjack.deck;
 
 /**
  * Enumeration class containing 13 card ranks.

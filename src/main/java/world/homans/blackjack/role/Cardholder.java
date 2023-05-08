@@ -1,4 +1,8 @@
-package world.homans.blackjack;
+package world.homans.blackjack.role;
+
+import world.homans.blackjack.deck.Card;
+import world.homans.blackjack.deck.CardRank;
+import world.homans.blackjack.deck.Deck;
 
 import java.util.ArrayList;
 
@@ -10,7 +14,7 @@ public class Cardholder {
     private final ArrayList<Card> hand;
 
     /**
-     * A cardholder holds no card by default.
+     * Constructor. A cardholder holds no card by default.
      */
     public Cardholder() {
         hand = new ArrayList<>();

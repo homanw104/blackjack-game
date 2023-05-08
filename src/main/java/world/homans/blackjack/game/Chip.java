@@ -1,4 +1,4 @@
-package world.homans.blackjack;
+package world.homans.blackjack.game;
 
 /**
  * Chip used in bets. A chip holds a fixed value.

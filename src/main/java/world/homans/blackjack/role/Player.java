@@ -1,4 +1,7 @@
-package world.homans.blackjack;
+package world.homans.blackjack.role;
+
+import world.homans.blackjack.game.Chip;
+import world.homans.blackjack.deck.Deck;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

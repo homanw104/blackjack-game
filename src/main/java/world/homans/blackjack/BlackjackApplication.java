@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import world.homans.blackjack.controller.PlayroomBetController;
+import world.homans.blackjack.role.Player;
 
 import java.io.IOException;
 import java.util.Objects;

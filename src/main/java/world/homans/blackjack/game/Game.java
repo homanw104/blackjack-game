@@ -1,4 +1,8 @@
-package world.homans.blackjack;
+package world.homans.blackjack.game;
+
+import world.homans.blackjack.deck.Deck;
+import world.homans.blackjack.role.Dealer;
+import world.homans.blackjack.role.Player;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -12,7 +16,7 @@ public class Game {
     private final Player player;                /* Player object will be passed from the Controller */
     private final Dealer dealer;                /* Each game has a new dealer. */
     private final Deck deck;                    /* Each game uses a new deck of card. */
-    private final ArrayList<Chip> bettingBox;   /* Stores a set of chips the player bet on this game. */
+    private final ArrayList<Chip> chips;        /* Stores a set of chips the player bet on this game. */
     private GameStatus gameStatus;              /* Game status. */
 
     /**
@@ -23,7 +27,7 @@ public class Game {
     public Game(Player player) {
         this.deck = new Deck();
         this.dealer = new Dealer();
-        this.bettingBox = new ArrayList<>();
+        this.chips = new ArrayList<>();
         this.player = player;
         this.gameStatus = GameStatus.CONTINUE;
     }
@@ -44,14 +48,14 @@ public class Game {
      * @param chip A chip.
      */
     public void increaseBet(Chip chip) {
-        bettingBox.add(chip);
+        chips.add(chip);
     }
 
     /**
      * Clear all the chips in betting box.
      */
     public void clearBet() {
-        bettingBox.clear();
+        chips.clear();
     }
 
     /**
@@ -59,12 +63,12 @@ public class Game {
      * @return bet value.
      */
     public int getCurrentBetValue() {
-        return bettingBox.stream().mapToInt(Chip::getValue).sum();
+        return chips.stream().mapToInt(Chip::getValue).sum();
     }
 
     /**
      * Calculate current bet value and format.
-     * @return formatted bet value string e.g. "Bet: $1,000"
+     * @return bet value string formatted as "Bet: $1,000"
      */
     public String getCurrentBetValueFormatted() {
         DecimalFormat formatter = new DecimalFormat("\t$###,###");
@@ -137,7 +141,7 @@ public class Game {
         return deck;
     }
 
-    public ArrayList<Chip> getBettingBox() {
-        return bettingBox;
+    public ArrayList<Chip> getChips() {
+        return chips;
     }
 }
