@@ -25,9 +25,10 @@ from *IntelliJ IDEA Edu* to get to know about JavaFX project structure.
 ## Packaging
 
 Before packaging, you need to [download](https://gluonhq.com/products/javafx/)
-OpenJFX libraries since JavaFX is no longer bundled in JDK since version 9.
-Note that only the latest version of JavaFX can be downloaded,
-LTS version downloads are paid services.
+OpenJFX libraries. JavaFX is no longer bundled in JDK since version 9.
+This means user who installed JDK 11 or so won't have the libraries necessary
+to run the game, we need to package the dependencies manually
+into the executable.
 
 To produce a standalone jar executable:
 

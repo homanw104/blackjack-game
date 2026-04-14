@@ -6,7 +6,7 @@
 
     <groupId>world.homans</groupId>
     <artifactId>blackjack</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 
     <properties>
         <junit.version>5.8.1</junit.version>
@@ -20,12 +20,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>17.0.0.1</version>
+            <version>17.0.18</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>17.0.0.1</version>
+            <version>17.0.18</version>
         </dependency>
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
